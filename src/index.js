@@ -1,17 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'; 
+import ReactDom from 'react-dom';
+
+//CSS
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import {Forms} from './forms';
+import Form from './Form';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+//setup vars
+function FormList() {
+ return (
+  <section className="formlist">
+    {Forms.map((no)=>{
+      return <Form key={no.id} what={no}></Form>; //'what' is the prop, we are passing in the 'no' object there.
+    })}
+  </section>
+ );
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+ReactDom.render(<FormList/>, document.getElementById('root')); 
